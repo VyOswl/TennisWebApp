@@ -108,7 +108,7 @@ public class TournoiDaoImpl implements TournoiDao {
 
 			ps.setString(1,tournoi.getNom());
             ps.setString(2,tournoi.getCode());
-            ps.setInt(4,tournoi.getId());
+            ps.setInt(3,tournoi.getId());
             ps.executeUpdate();
 		} catch(Exception e) {
 			throw new RuntimeException(e);

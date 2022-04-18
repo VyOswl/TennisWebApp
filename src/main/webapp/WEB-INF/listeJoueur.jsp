@@ -32,6 +32,14 @@
 
 <div style="    padding: 1.5rem;    margin-right: 0;    margin-left: 0;    border-width: .2rem;">
 <a class="btn btn-primary" href="/TennisWebApp/ajouterJoueur" role="button">Ajouter un joueur</a>
+
+<form style="float:right;"class="form-inline" action="listeJoueur" method="post">
+	<button id="btnF" class="btn btn-info" type="submit" name="action1" value="Femme">⚢ Femme</button>
+</form>
+<form style="float:right;margin-right:20px;"class="form-inline" action="listeJoueur" method="post">
+	<button id="btnH" class="btn btn-info" type="submit" name="action1" value="Homme">⚣ Homme</button>
+</form>
+
 </div>
 
 <table class="table" style="color: white;">

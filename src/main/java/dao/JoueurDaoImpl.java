@@ -164,4 +164,29 @@ public class JoueurDaoImpl implements JoueurDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Joueur searchFvsH(int id) {
+		DaoFactory df = DaoFactory.instanceDaoF();
+		Joueur player = new Joueur();
+		
+		try {
+			Connection conn = df.getConn();
+			String query = "SELECT * FROM joueur WHERE id = ?;";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setInt(1, id);
+			
+	        ResultSet rs= ps.executeQuery();
+
+	        while(rs.next()){
+	        	player.setId(rs.getInt("ID"));
+	        	player.setNom(rs.getString("NOM"));
+	        	player.setPrenom(rs.getString("PRENOM"));
+	        	player.setSexe(rs.getString("SEXE"));
+	        }
+	        System.out.println(player);
+	        return player;
+		} catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

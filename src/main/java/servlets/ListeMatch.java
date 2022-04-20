@@ -1,13 +1,11 @@
 package servlets;
 
 import java.io.IOException;
-<<<<<<< Updated upstream
-=======
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
->>>>>>> Stashed changes
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,37 +13,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-<<<<<<< Updated upstream
-import dao.JoueurDaoImpl;
-=======
+
 import beans.Joueur;
 import beans.Match;
 import dao.MatchDaoImpl;
->>>>>>> Stashed changes
 
-/**
- * Servlet implementation class ListeMatch
- */
+
+
 @WebServlet("/listeMatch")
 public class ListeMatch extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-<<<<<<< Updated upstream
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	
+	public List<Match> list;
+	public List<Joueur> result;
+
     public ListeMatch() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-=======
 	
-	public List<Match> list;
-	public List<Joueur> result;
+	
 	
 	
 	public void setList(List<Match> list) {
@@ -67,48 +55,24 @@ public class ListeMatch extends HttpServlet {
 		return list;
 	}
 
-
-	public ListeMatch() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	
->>>>>>> Stashed changes
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession(true);
 		if (session.getAttribute("connectedUser") == null) {
 			response.sendRedirect("/TennisWebApp/login");
 			return;
 		}
-<<<<<<< Updated upstream
-		
-		JoueurDaoImpl joueurs = new JoueurDaoImpl();
-		
-		request.setAttribute("list", joueurs.lister());
-		
-=======
 
 		MatchDaoImpl match = new MatchDaoImpl();
 		list = match.lister();
 		request.setAttribute("list", list);
-
->>>>>>> Stashed changes
 		this.getServletContext().getRequestDispatcher("/WEB-INF/listeMatch.jsp").forward(request, response);
 	}
 
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< Updated upstream
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
 
-}
-=======
 		HttpSession session=request.getSession(true);
 		String action = request.getParameter("action1");
 		String query;
@@ -173,4 +137,3 @@ public class ListeMatch extends HttpServlet {
 		}
 	}
 }
->>>>>>> Stashed changes

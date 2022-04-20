@@ -28,9 +28,7 @@ public class ListeTournoi extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession(true);
 		if (session.getAttribute("connectedUser") == null) {
@@ -45,41 +43,35 @@ public class ListeTournoi extends HttpServlet {
 		this.getServletContext().getRequestDispatcher("/WEB-INF/listeTournoi.jsp").forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession(true); 
-		
+		HttpSession session = request.getSession(true);
 		String action = request.getParameter("action1");
-		
+
 		if (session.getAttribute("connectedUser") == null) {
 			response.sendRedirect("/TennisWebApp/login");
 			return;
 		}
 
 		if ("Rechercher".equals(action)) {
-			JoueurDaoImpl newJD = new JoueurDaoImpl();
+			TournoiDaoImpl newJD = new TournoiDaoImpl();
 			String txt = request.getParameter("txtsearch");
 			System.out.println(txt);
 			if (!txt.equals("")) {
-			    request.setAttribute("list", newJD.chercher(txt));
-			    this.getServletContext().getRequestDispatcher("/WEB-INF/listeJoueur.jsp").forward(request, response);
+				request.setAttribute("list", newJD.chercherT(txt));
+				this.getServletContext().getRequestDispatcher("/WEB-INF/listeTournoi.jsp").forward(request,
+						response);
 			} else {
 				System.out.println("Champs de recherche est vide");
 			}
-			
+
 		} else {
-			//HttpSession session=request.getSession(false);  
-	        //session.invalidate();
 			if (session != null) {
 				session.removeAttribute("connectedUser");
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
-		        dispatcher.forward(request, response);
-	        //session.setAttribute("connectedUser", null);
-	        //response.sendRedirect("/TennisApp/login");
-	        return;
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+				dispatcher.forward(request, response);
+				return;
 			}
-		};
+		}
 	}
 }

@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +11,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import beans.Tournoi;
 import dao.JoueurDaoImpl;
 import dao.TournoiDaoImpl;
 
-/**
- * Servlet implementation class ListeTournoi
- */
+
 @WebServlet("/listeTournoi")
 public class ListeTournoi extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	public List<Tournoi> list;
+	
+	
     public ListeTournoi() {
         super();
         // TODO Auto-generated constructor stub
@@ -37,26 +36,26 @@ public class ListeTournoi extends HttpServlet {
 		}
 		
 		TournoiDaoImpl tournois = new TournoiDaoImpl();
-		
-		request.setAttribute("list", tournois.listerT());
+		list = tournois.listerT();
+		request.setAttribute("list", list);
 		
 		this.getServletContext().getRequestDispatcher("/WEB-INF/listeTournoi.jsp").forward(request, response);
 	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
 		String action = request.getParameter("action1");
-
+		TournoiDaoImpl newJD = new TournoiDaoImpl();
+		String txt = request.getParameter("txtsearch");
+		
+		HttpSession session = request.getSession(true);
 		if (session.getAttribute("connectedUser") == null) {
 			response.sendRedirect("/TennisWebApp/login");
 			return;
 		}
 
 		if ("Rechercher".equals(action)) {
-			TournoiDaoImpl newJD = new TournoiDaoImpl();
-			String txt = request.getParameter("txtsearch");
-			System.out.println(txt);
+			//System.out.println(txt);
 			if (!txt.equals("")) {
 				request.setAttribute("list", newJD.chercherT(txt));
 				this.getServletContext().getRequestDispatcher("/WEB-INF/listeTournoi.jsp").forward(request,
@@ -64,7 +63,11 @@ public class ListeTournoi extends HttpServlet {
 			} else {
 				System.out.println("Champs de recherche est vide");
 			}
-
+		
+		} else if ("Refresh".equals(action)){
+			request.setAttribute("list", list);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/listeTournoi.jsp").forward(request, response);
+		
 		} else {
 			if (session != null) {
 				session.removeAttribute("connectedUser");

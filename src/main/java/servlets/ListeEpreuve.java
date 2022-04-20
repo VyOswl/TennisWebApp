@@ -70,6 +70,11 @@ public class ListeEpreuve extends HttpServlet {
 				System.out.println("Champs de recherche est vide");
 			}
 			
+		} else if ("Refresh".equals(action)){
+			//list = newED.lister();
+			request.setAttribute("list", list);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/listeEpreuve.jsp").forward(request, response);
+			
 		} else {
 			if (session != null) {
 				session.removeAttribute("connectedUser");

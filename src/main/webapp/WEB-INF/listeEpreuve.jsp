@@ -105,7 +105,7 @@
         <div class="starter-template">
           <h1>Liste des Épreuves</h1>
           <h4 class="lead">Bienvenue
-            <c:out value="${connectedUser.getLogin()}" />
+            <c:out value="${connectedUser.getLogin().toUpperCase()}" />
 
           </h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -117,7 +117,11 @@
       <div class="container">
 
         <div style="    padding: 1.5rem;    margin-right: 0;    margin-left: 0;    border-width: .2rem;">
-          <a class="btn btn-primary" href="/TennisWebApp/ajouterEpreuve" role="button">Ajouter un épreuve</a>
+          <a class="btn btn-warning" href="/TennisWebApp/ajouterEpreuve" role="button">Ajouter un épreuve</a>
+       
+       	 <form style="float:right;"class="form-inline" action="listeEpreuve" method="post">
+			<button class="btn btn-primary" type="submit" name="action1" value="Refresh">Refresh</button>
+		 </form>
         </div>
 	  </div>
 	 

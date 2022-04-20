@@ -21,7 +21,7 @@
 
   <div class="starter-template">
     <h1>Liste des joueurs</h1>
-    <h4 class="lead">Bienvenue .... <c:out value="${connectedUser.getLogin()}"/>
+    <h4 class="lead">Bienvenue  <c:out value="${connectedUser.getLogin().toUpperCase()}"/>
 
     </h4>
      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolor.</p>
@@ -31,15 +31,17 @@
 <div class="container">
 
 <div style="    padding: 1.5rem;    margin-right: 0;    margin-left: 0;    border-width: .2rem;">
-<a class="btn btn-primary" href="/TennisWebApp/ajouterJoueur" role="button">Ajouter un joueur</a>
+<a class="btn btn-warning" href="/TennisWebApp/ajouterJoueur" role="button">Ajouter un joueur</a>
 
 <form style="float:right;"class="form-inline" action="listeJoueur" method="post">
-	<button id="btnF" class="btn btn-info" type="submit" name="action1" value="Femme">⚢ Femme</button>
+	<button class="btn btn-primary" type="submit" name="action1" value="Refresh">Refresh</button>
 </form>
-<form style="float:right;margin-right:20px;"class="form-inline" action="listeJoueur" method="post">
+<form style="float:right;margin-right:140px;"class="form-inline" action="listeJoueur" method="post">
 	<button id="btnH" class="btn btn-info" type="submit" name="action1" value="Homme">⚣ Homme</button>
 </form>
-
+<form style="float:right;margin-right:8px"class="form-inline" action="listeJoueur" method="post">
+	<button id="btnF" class="btn btn-info" type="submit" name="action1" value="Femme">⚢ Femme</button>
+</form>
 </div>
 
 <table class="table" style="color: white;">

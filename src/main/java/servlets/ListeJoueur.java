@@ -106,7 +106,12 @@ public class ListeJoueur extends HttpServlet {
 			//System.out.println(result);
 			request.setAttribute("list", result);
 			this.getServletContext().getRequestDispatcher("/WEB-INF/listeJoueur.jsp").forward(request, response);
-				
+		
+		} else if ("Refresh".equals(action)){
+			list = newJD.lister();
+			request.setAttribute("list", list);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/listeJoueur.jsp").forward(request, response);
+			
 		} else {
 			if (session != null) {
 				session.removeAttribute("connectedUser");

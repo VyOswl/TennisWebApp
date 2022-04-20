@@ -97,7 +97,9 @@ public class JoueurDaoImpl implements JoueurDao {
 	@Override
 	public boolean supprimer(int id) {
 		DaoFactory df = DaoFactory.instanceDaoF();
-		String query = "DELETE from JOUEUR where ID = ?;";
+		String query = "SET FOREIGN_KEY_CHECKS = 0;"
+				+ "DELETE from JOUEUR where ID = ?;"
+				+ "SET FOREIGN_KEY_CHECKS = 1";
 
 		
 	    try {
@@ -106,7 +108,7 @@ public class JoueurDaoImpl implements JoueurDao {
 			
 			ps.setInt(1, id);
             boolean row = ps.executeUpdate() > 0;
-	        System.out.print("row");
+	        //System.out.print("row");
 	        return row;
 	        } catch(Exception e) {
 			throw new RuntimeException(e);
@@ -158,7 +160,7 @@ public class JoueurDaoImpl implements JoueurDao {
 	        	player.setSexe(rs.getString("SEXE"));
 	            result.add(player);
 	        }
-	        System.out.println(result);
+	        //System.out.println(result);
 	        return result;
 		} catch(Exception e) {
 			throw new RuntimeException(e);

@@ -19,8 +19,7 @@
 	  <input type="text" id="inputEmail" name="txtLogin" class="form-control" placeholder="Addresse mail" required autofocus>
 	  <label for="inputPassword" class="sr-only" >Password</label>
 	  <input type="password" id="inputPassword" name="txtPassword" class="form-control" placeholder="Mot de passe" required>
-	  <label for="inputProfil" class="sr-only" >Profile N°</label>
-	  <input type="profil" id="inputProfil" name="txtProfil" class="form-control" placeholder="N° de profil" required>
+	 
 	  
 	  <div class="checkbox mb-3" style="color:#FFF ;">
 	    

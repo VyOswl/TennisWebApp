@@ -119,7 +119,7 @@
         <div class="starter-template">
           <h1>Liste des matchs</h1>
           <h4 class="lead">Bienvenue 
-            <c:out value="${connectedUser.getLogin()}" />
+            <c:out value="${connectedUser.getLogin().toUpperCase()}" />
 
           </h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
@@ -131,12 +131,15 @@
       <div class="container">
 
         <div style="display:block;padding: 1.5rem;margin-right: 0;margin-left: 0;margin-bottom:30px;border-width:.2rem;">
-          <a style="float:left;" class="btn btn-primary" href="/TennisWebApp/ajouterMatch" role="button">Ajouter un match</a>
+          <a style="float:left;" class="btn btn-warning" href="/TennisWebApp/ajouterMatch" role="button">Ajouter un match</a>
           
-          	  <form style="float:right;"class="form-inline" action="listeMatch" method="post">
+          <form style="float:right;margin-right:0"class="form-inline" action="listeMatch" method="post">
+			<button class="btn btn-primary" type="submit" name="action1" value="Refresh">Refresh</button>
+		  </form>
+          	  <form style="float:right;margin-right:170px"class="form-inline" action="listeMatch" method="post">
 	            <button id="btnFinaliste" type="submit" name="action1" value="Finaliste"></button>
 	          </form>
-	          <form style="float:right;margin-right:150px;"class="form-inline" action="listeMatch" method="post">
+	          <form style="float:right;margin-right:70px;"class="form-inline" action="listeMatch" method="post">
 	            <button id="btnVainqueur" type="submit" name="action1" value="Vainqueur"></button>
 	          </form>
 	          

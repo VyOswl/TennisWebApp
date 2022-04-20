@@ -49,18 +49,17 @@ public class UserDaoImpl {
 	}
 	
 	
-	 public String register(String login, String password, int profil) {
+	 public String register(String login, String password) {
 
          Connection conn = null;
          PreparedStatement s = null;
          
          try {
         	 conn = df.getConn();
-        	 s = conn.prepareStatement("INSERT into connexion(login, password, profil) values (?, ?, ?);");
+        	 s = conn.prepareStatement("INSERT into connexion(login, password) values (?, ?);");
         	 
         	 s.setString(1,login);
  			 s.setString(2, password);
- 			 s.setInt(3, profil);
 
              int i= s.executeUpdate();
              

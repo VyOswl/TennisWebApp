@@ -48,8 +48,8 @@ public class signup extends HttpServlet {
 		try {
 			String login = request.getParameter("txtLogin");
 			String password = HashClass.get_SHA1(request.getParameter("txtPassword"), HashClass.getSalt());
-			int profil = Integer.parseInt(request.getParameter("txtProfil"));
-			String createUser = userDaoI.register(login, password, profil);		
+			//int profil = Integer.parseInt(request.getParameter("txtProfil"));
+			String createUser = userDaoI.register(login, password);		
 			
 			if(createUser.equals("SUCCESS")) {
 	            request.getRequestDispatcher("/WEB-INF//login.jsp").forward(request, response);

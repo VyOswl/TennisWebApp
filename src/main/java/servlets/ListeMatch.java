@@ -105,35 +105,42 @@ public class ListeMatch extends HttpServlet {
 				list = newMD.chercher(txt,query);
 			    request.setAttribute("list", list);
 			    this.getServletContext().getRequestDispatcher("/WEB-INF/listeMatch.jsp").forward(request, response);
-			    
-		} else if ("Deconnexion".equals(action)) {
+		
+		} else if ("Finaliste".equals(action)) {
+			for (Match m: list) {
+				int id = m.getIdFinaliste();
+				//System.out.println(id);
+				result.add(newMD.searchFvsV(id));
+			}
+			//System.out.println(result);
+			request.setAttribute("list", list);
+			request.setAttribute("result", result);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/listeMatch.jsp").forward(request, response);
+				
+		} else if ("Vainqueur".equals(action)) {
+			for (Match m: list) {
+				int id = m.getIdVainqueur();
+				//System.out.println(id);
+				result.add(newMD.searchFvsV(id));
+			}
+			//System.out.println(result);
+			request.setAttribute("list", list);
+			request.setAttribute("result", result);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/listeMatch.jsp").forward(request, response);
+		
+		} else if ("Refresh".equals(action)){
+			list = newMD.lister();
+			request.setAttribute("list", list);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/listeMatch.jsp").forward(request, response);
+		
+		} else {
 			if (session != null) {
 				session.removeAttribute("connectedUser");
-		        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
-		        dispatcher.forward(request, response);
-	        return;
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/login.jsp");
+				dispatcher.forward(request, response);
+			    return;
 			}
-		} else if ("Finaliste".equals(action)) {
-				for (Match m: list) {
-					int id = m.getIdFinaliste();
-					//System.out.println(id);
-					result.add(newMD.searchFvsV(id));
-				}
-				//System.out.println(result);
-				request.setAttribute("list", list);
-				request.setAttribute("result", result);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/listeMatch.jsp").forward(request, response);
-				
-		} else {
-				for (Match m: list) {
-					int id = m.getIdVainqueur();
-					//System.out.println(id);
-					result.add(newMD.searchFvsV(id));
-				}
-				//System.out.println(result);
-				request.setAttribute("list", list);
-				request.setAttribute("result", result);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/listeMatch.jsp").forward(request, response);
 		}
+					
 	}
 }

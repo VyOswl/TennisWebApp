@@ -17,7 +17,7 @@ public class User {
 		this.profil = profil;
 	}
 	
-	public User(String login, String password, int profil) {
+	public User(String login, String password) {
 		this.login = login;
 		this.password = password;
 	}

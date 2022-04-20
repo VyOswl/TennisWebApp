@@ -62,14 +62,16 @@
         </div>
       </nav>
 
+		<div class="center">
+			<div class="ball"></div>
+			<div class="shadow"></div>
+		</div>
       <main role="main" class="container">
 
         <div class="starter-template">
           <h1>Liste des Tournois</h1>
-          <h4 class="lead">Bienvenue
-            <c:out value="${connectedUser.getLogin().toUpperCase()}" />
-
-          </h4>
+          <h4 class="lead">Bienvenue  <span style="color: #3792A9;"><c:out value="${connectedUser.getLogin().toUpperCase()}"/>
+		  </span></h4>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
             ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolor.</p>

@@ -27,7 +27,7 @@
     <button class="btn btn-lg btn-primary btn-block" style="background-color:#C49650; border-color:#FFF;"
       type="submit">Sign in</button>
 
-    <p class="text-inverse text-center"><a href="signup" data-abc="true">Register a new account?</a></p>
+    <p style="margin-top:40px;" class="text-inverse text-center"><a href="signup" data-abc="true">Register a new account?</a></p>
   </form>
 
 

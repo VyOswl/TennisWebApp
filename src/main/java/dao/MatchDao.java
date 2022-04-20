@@ -13,7 +13,7 @@ public interface MatchDao {
 
 	Match lecture(int id);
 
-	boolean supprimer(int id);
+	void supprimer(int id);
 
 	List<Match> chercher(String txt, String query);
 

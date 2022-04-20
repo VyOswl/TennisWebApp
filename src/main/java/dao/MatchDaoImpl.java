@@ -80,18 +80,23 @@ public class MatchDaoImpl implements MatchDao {
 	}
 
 	@Override
-	public boolean supprimer(int id) {
+	public void supprimer(int id) {
 		DaoFactory df = DaoFactory.instanceDaoF();
-		String query = "DELETE from MATCH_TENNIS WHERE ID = ?;";
-
-		try {
-			Connection conn = df.getConn();
-			PreparedStatement ps = conn.prepareStatement(query);
-
-			ps.setInt(1, id);
-			boolean row = ps.executeUpdate() > 0;
-			System.out.print("row");
-			return row;
+		
+		String q1 = "SET FOREIGN_KEY_CHECKS = 0;",
+				q2 = "DELETE from MATCH_TENNIS WHERE ID = ?;",
+				q3 = "SET FOREIGN_KEY_CHECKS = 1";
+		
+	    try {
+	        Connection conn = df.getConn();
+			PreparedStatement ps1 = conn.prepareStatement(q1);
+			PreparedStatement ps2 = conn.prepareStatement(q2);
+			PreparedStatement ps3 = conn.prepareStatement(q3);
+			
+			ps2.setInt(1, id);
+			ps1.executeUpdate();
+			ps2.executeUpdate();
+			ps3.executeUpdate();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

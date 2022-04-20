@@ -15,7 +15,7 @@
 <body style="cursor: url(cursor.svg), auto;background-image:linear-gradient(to right,black,#14213D,#213C56,#43553D);text-align: center;">
 
   <form class="form-signin" method="post" action="login">
-    <img class="mb-4" src="logo.png" alt="">
+    <img class="mb-4" src="logo.png" width="90%">
     <h1 class="h3 mb-3 font-weight-normal" style="color:#FFF;">Please sign in</h1>
     <label for="inputEmail" class="sr-only">Email address</label>
     <input type="text" id="inputEmail" name="txtLogin" class="form-control" placeholder="Addresse mail" required

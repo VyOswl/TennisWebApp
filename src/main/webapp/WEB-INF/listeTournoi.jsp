@@ -114,7 +114,7 @@
                     <a style="width:100px;" type="button" class="btn btn-outline-primary"
                       href="modifierTournoi?id=${tournoi.id}" role="button">Modifier</a>
                     <a style="width:100px;" type="submit" class="btn btn-warning""
-                      href="supprimerTournoi?id=${tournoi.id}" role="button">Supprimer</a>
+                      onclick="return confirm('Êtes-vous sûr de vouloir effectuer cette action?')" href="supprimerTournoi?id=${tournoi.id}" role="button">Supprimer</a>
                   </td>
                 </tr>
                 <!--/form-->

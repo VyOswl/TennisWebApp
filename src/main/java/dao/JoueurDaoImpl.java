@@ -95,21 +95,26 @@ public class JoueurDaoImpl implements JoueurDao {
 	
 
 	@Override
-	public boolean supprimer(int id) {
+	public void supprimer(int id) {
 		DaoFactory df = DaoFactory.instanceDaoF();
-		String query = "SET FOREIGN_KEY_CHECKS = 0;"
-				+ "DELETE from JOUEUR where ID = ?;"
-				+ "SET FOREIGN_KEY_CHECKS = 1";
+		String q1 = "SET FOREIGN_KEY_CHECKS = 0;",
+				q2 = "DELETE from JOUEUR where ID = ?;",
+				q3 = "SET FOREIGN_KEY_CHECKS = 1";
 
 		
 	    try {
 	        Connection conn = df.getConn();
-			PreparedStatement ps = conn.prepareStatement(query);
+			PreparedStatement ps1 = conn.prepareStatement(q1);
+			PreparedStatement ps2 = conn.prepareStatement(q2);
+			PreparedStatement ps3 = conn.prepareStatement(q3);
 			
-			ps.setInt(1, id);
-            boolean row = ps.executeUpdate() > 0;
+			ps2.setInt(1, id);
+			ps1.executeUpdate();
+			ps2.executeUpdate();
+			ps3.executeUpdate();
+           /* boolean row = ps.executeUpdate() > 0;
 	        //System.out.print("row");
-	        return row;
+	        return row; */
 	        } catch(Exception e) {
 			throw new RuntimeException(e);
 		}

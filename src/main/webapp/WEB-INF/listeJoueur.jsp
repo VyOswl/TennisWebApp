@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="starter-template.css">
     <title>Liste des joueurs</title>
   </head>
+  
   <body style="cursor: url(cursor.svg), auto;background-image:linear-gradient(to right,black,#14213D,#213C56,#43553D);color:white;">
 <%@ include file="menu.jsp" %>
 <main role="main" class="container">
@@ -44,6 +45,8 @@
 </form>
 </div>
 
+<s:property value ="list.size()"/>
+
 <table class="table" style="color: white;">
   <thead>
     <tr>
@@ -58,7 +61,7 @@
    <c:if test="${list.size() == 0}" >Aucune occurrence trouvée</c:if>     
    <c:if test="${list.size() != 0}" >
 		<c:forEach items="${list}" var="joueur">
-	   		<!-- form action="modifierJoueur" method="get"-->
+	   		<form >
 		   		<tr>
 			      <th scope="row"> <c:out value="${joueur.id}" /> </th>
 			      <td> <c:out value="${joueur.nom}" /> </td>
@@ -66,10 +69,10 @@
 			      <td><c:out value="${joueur.sexe}" /></td>
 				  <td>
 				    <a style="width:100px;" type="button" class="btn btn-outline-primary" href="/TennisWebApp/modifierJoueur?id=${joueur.id}" role="button">Modifier</a>
-					<a style="width:100px;" type="submit" class="btn btn-outline-warning" href="/TennisWebApp/supprimerJoueur?id=${joueur.id}"role="button">Supprimer</a>
+					<a style="width:100px;" type="submit" class="btn btn-outline-warning" onclick="return confirm('Êtes-vous sûr de vouloir effectuer cette action?')" href="/TennisWebApp/supprimerJoueur?id=${joueur.id}" role="button">Supprimer</a>
 				  </td>
 			  	</tr>
-		  	<!--/form-->
+		  	</form>
 		</c:forEach>
 	</c:if>
   </tbody>

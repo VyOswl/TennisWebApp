@@ -75,7 +75,7 @@
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-          <img src="plogo.svg" style="width:30px;">
+          <img src="plogo.svg" style="width:35px;">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"

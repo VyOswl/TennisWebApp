@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!doctype html>
     <html lang="fr">
@@ -90,10 +91,10 @@
           </ul>
           <form class="form-inline my-2 my-lg-0" action="listeEpreuve" method="post">
           <select name="txtType" style="margin-right:10px;"> 
-          	<option value="F"> Femme </option>
-            <option value="H"> Homme</option>
+          	<option value="F" ${param.txtType == 'F' ? 'selected' : ''}> Femme </option>
+            <option value="H" ${param.txtType == 'H' ? 'selected' : ''}> Homme</option>
           </select>
-            <input class="form-control mr-sm-2" type="text" name="txtYear" placeholder="Année" aria-label="Search">
+            <input class="form-control mr-sm-2" type="text" name="txtYear" value="${fn:escapeXml(param.txtYear)}" placeholder="Année" aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit" name="action1"
               value="Rechercher">Rechercher</button>
           </form>

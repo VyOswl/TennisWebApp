@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">  
   <img src="plogo.svg" style="width:35px;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +35,7 @@
      
     </ul>
     <form class="form-inline my-2 my-lg-0" action="listeJoueur" method="post">
-      <input class="form-control mr-sm-2" type="text" name="txtsearch" placeholder="Search" aria-label="Search">
+      <input value="${fn:escapeXml(param.txtsearch)}" class="form-control mr-sm-2" type="text" name="txtsearch" placeholder="Search" aria-label="Search">
       <button class="btn btn-secondary my-2 my-sm-0" type="submit" name="action1" value="Rechercher">Rechercher</button>
     </form>
   </div>

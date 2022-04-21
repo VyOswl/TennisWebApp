@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">  
   <img src="plogo.svg" style="width:35px;">

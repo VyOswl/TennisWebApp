@@ -196,4 +196,23 @@ public class JoueurDaoImpl implements JoueurDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public String checkJexists(String nom, String prenom) {
+		DaoFactory df = DaoFactory.instanceDaoF();
+		String countrow = "";
+		
+		try {
+			Connection conn = df.getConn();
+			String query = "SELECT COUNT(*) FROM joueur where nom=? AND prenom=?;";
+			PreparedStatement ps = conn.prepareStatement(query);
+			ps.setString(1, nom);
+			ps.setString(1, prenom);
+			ResultSet rs= ps.executeQuery();
+			rs.next();
+			countrow = rs.getString(1);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return countrow;
+	}
 }

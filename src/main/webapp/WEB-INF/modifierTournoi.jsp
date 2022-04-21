@@ -19,7 +19,8 @@
 
 <main role="main" class="container">
 
-  <div class="starter-template">
+  <div class="starter-template-menu">
+  	<img src="logobnw.svg" width="20%" />
     <h1>Modifier le tournoi</h1>
     <p class="lead"><c:if test="${ !empty erreur }"><p style="color:red;"><c:out value="${ erreur }" /></p></c:if>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
   </div>
@@ -45,7 +46,7 @@
 	</div>
    </div> 
   
-  <button class="btn btn-primary center" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
 
    <div>
